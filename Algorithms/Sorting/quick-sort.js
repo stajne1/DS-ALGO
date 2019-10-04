@@ -27,4 +27,4 @@ function quickSort(arr, start = 0, end = arr.length - 1) {
     return arr;
 }
 
-console.log(quickSort([200, 5, 25, 35, 260, -56, 45, 58, 44, 22]))
+export default quickSort;
