@@ -114,6 +114,23 @@ class SinglyLinkedList {
         }
         return node;
     }
+
+    reverse() {
+        let preNode = null;
+        let currNode = this.head;
+        let i = 0;
+        while(i < this.length){
+            let nextNode = currNode.next;
+            currNode.next = preNode;
+            preNode = currNode;
+            currNode = nextNode;
+            i++;
+        }
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+        return this;
+    }
 }
 
 export default SinglyLinkedList;
