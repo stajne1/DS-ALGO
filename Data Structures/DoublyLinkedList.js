@@ -90,4 +90,59 @@ class DoublyLinkedList {
         }
         return false;
     }
+
+    insert(index, val) {
+        if(index === 0) return !!this.unshift(val);
+        if(index === this.length) return !!this.push(val);
+        let preNode = this.get(index-1);
+        if(preNode) {
+            let newNode = new Node(val);
+            let nextNode = preNode.next;
+
+            newNode.next = nextNode;
+            nextNode.prev = newNode;
+
+            preNode.next = newNode;
+            newNode.prev = preNode;
+            this.length++;
+            return true
+        }
+        return false;
+    }
+
+    remove(index) {
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        let node = this.get(index);
+        if(node) {
+            let nextNode = node.next;
+            let preNode = node.prev;
+            nextNode.prev = preNode;
+            preNode.next = nextNode;
+
+            node.next = null;
+            node.prev = null;
+            this.length--;
+            return node;
+        }
+        return undefined;
+    }
+
+    reverse() {
+        let preNode = null;
+        let currNode = this.head;
+        while(currNode) {
+            let nextNode = currNode.next;
+            currNode.next = preNode;
+            currNode.prev = nextNode;
+
+            preNode = currNode;
+            currNode = nextNode;
+        }
+        this.tail = this.head;
+        this.head = preNode;
+        return this;
+    }
 }
+
+export default DoublyLinkedList;
