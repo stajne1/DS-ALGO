@@ -20,7 +20,7 @@ class Stack {
         throw new Error(`Stack Underflow.`);
     }
 
-    empty() {
+    isEmpty() {
         return this.top > -1 ? false : true;
     }
 

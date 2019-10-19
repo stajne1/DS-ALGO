@@ -50,6 +50,7 @@ class SinglyLinkedList {
             this.head = this.head.next;
             this.length--;
         }
+        if(head) head.next = null;
         return head;
     }
 
