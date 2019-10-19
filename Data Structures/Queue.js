@@ -2,31 +2,29 @@ import SinglyLinkedList from './SinglyLinkedList';
 
 class Queue {
     constructor(capacity) {
-        if(!capacity) throw new Error('Please specify capacity.')
-        this.size = 0;
+        if(!capacity) throw new Error('Please specify capacity.');
         this.elements = new SinglyLinkedList();
         this.capacity = capacity;
     }
 
     isEmpty() {
-        return this.size === 0 ? true : false;
+        return this.elements.length === 0 ? true : false;
     }
 
     isFull() {
-        return this.size === this.capacity ? true : false;
+        return this.elements.length === this.capacity ? true : false;
     }
 
     enQueue(val) {
         if(!this.isFull()) {
            this.elements.push(val);
-           return ++this.size;
+           return this.elements.length;
         }
         throw new Error('Queue OverFlow');
     }
 
     deQueue() {
         if(!this.isEmpty()) {
-            this.size--;
             return this.elements.shift();
         }
         throw new Error('Queue UnderFlow');
