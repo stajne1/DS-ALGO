@@ -1,3 +1,5 @@
+// Queue Implementation Using Linked List.
+
 import SinglyLinkedList from './SinglyLinkedList';
 
 class Queue {
@@ -16,6 +18,7 @@ class Queue {
     }
 
     enQueue(val) {
+        if(!val) throw new Error(`Can't Push Empty Value.`);
         if(!this.isFull()) {
            this.elements.push(val);
            return this.elements.length;

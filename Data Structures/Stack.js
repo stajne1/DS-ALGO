@@ -1,27 +1,34 @@
+//Stack Implementation without Linked List.
+
 class Stack {
-    constructor() {
-        this.top = -1;
+    constructor(capacity) {
+        if(!capacity) throw new Error('Please specify capacity.');
         this.elements = [];
+        this.capacity = capacity;
     }
 
     push(val) {
-        if(val) {
-            this.elements[++this.top] = val;
+        if(!val) throw new Error(`Can't Push Empty Value.`);
+        if(!this.isFull()) {
+            this.elements.push(val)
             return this.elements.length;
         }
-        throw new Error(`Can't Push Empty Value.`);
+        throw new Error(`Stack OverFlow`);
     }
 
     pop() {
-        if(this.top > -1) {
-            this.top--;
+        if(!this.isEmpty()) {
             return this.elements.pop();
         }
         throw new Error(`Stack Underflow.`);
     }
 
+    isFull() {
+       return this.elements.length === this.capacity ? true : false; 
+    }
+
     isEmpty() {
-        return this.top > -1 ? false : true;
+        return this.elements.length === 0 ? true : false;
     }
 
     size() {
